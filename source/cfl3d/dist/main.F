@@ -535,7 +535,11 @@ c
       rewind(15)
       rewind(66)
       rewind(99)
-
+      
+      if (icgns .ne. 1) then      
+      open(unit=1,file=grid,form='unformatted',status='old')      
+      open(unit=2,file=restrt,form='unformatted',status='unknown')      
+      end if
       open(unit=20,file=pplunge,form='formatted',status='unknown')
       open(unit=21,file=ovrlap,form='unformatted',status='unknown')
       open(unit=22,file=patch,form='unformatted',status='unknown')
@@ -585,13 +589,6 @@ c
      .           maxcs0,ncycmax0,intmax0,nsub10,intmx0,mxxe0,
      .           mptch0,msub10,ibufdim0,nbuf0,mxbcfil0,nmds0,
      .           maxaes0,maxsegdg0,imode,ntr,bcfiles,bou,nou)
-c
-c
-c
-      if (icgns .ne. 1) then
-      open(unit=1,file=grid,form='unformatted',status='old')
-      open(unit=2,file=restrt,form='unformatted',status='unknown')
-      end if
 c
       open(unit=12,file=residual,form='formatted',status='unknown')
       open(unit=13,file=turbres,form='formatted',status='unknown')
