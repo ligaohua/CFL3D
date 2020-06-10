@@ -451,13 +451,15 @@ c
  5021 continue
 c
 #if defined DIST_MPI
-c     all processors need to know the host's value of nblstat to 
+c     all processors need to know the first slave node's value of nblstat to 
 c     get same order of ramped cfl/dt output as sequential code 
 c
       do 5025 nbl=1,nblock
+      if (mblk2nd(nbl).eq.1) then
       if (levt.ne.levelg(nbl)) go to 5025
       nblstat_h = nbl
       go to 5026
+      end if
  5025 continue
  5026 continue
 #else
